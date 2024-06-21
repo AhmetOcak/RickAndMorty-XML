@@ -1,4 +1,4 @@
-package com.ahmetocak.rickandmorty.domain.usecase.character
+package com.ahmetocak.rickandmorty.domain.usecase
 
 import com.ahmetocak.rickandmorty.common.Response
 import com.ahmetocak.rickandmorty.domain.model.character.Character

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="locationItem"
+            type="com.ahmetocak.rickandmorty.domain.model.location.Locations" />
+
+        <variable
+            name="location_image"
+            type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="locationItemClickListener"
+            type="com.ahmetocak.rickandmorty.ui.home.adapter.LocationItemClickListener" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/mv_location"
+        android:layout_width="256dp"
+        android:layout_height="96dp"
+        android:clickable="true"
+        android:onClick="@{() -> locationItemClickListener.onLocationItemClick(locationItem)}">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/iv_location"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:adjustViewBounds="true"
+                android:importantForAccessibility="no"
+                android:scaleType="centerCrop"
+                android:src="@{location_image}"
+                tools:srcCompat="@drawable/cronenberg_earth" />
+
+            <TextView
+                android:id="@+id/tv_location_name"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@{locationItem.name}"
+                tools:text="Earth" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+</layout>

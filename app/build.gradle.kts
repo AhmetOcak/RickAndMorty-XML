@@ -60,8 +60,8 @@ dependencies {
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
 
-    // Picasso
-    implementation(libs.picasso)
+    // Coil
+    implementation(libs.coil)
 
     // Paging 3
     implementation(libs.androidx.paging.runtime)

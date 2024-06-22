@@ -6,22 +6,24 @@
     <data>
 
         <variable
-            name="character_img"
-            type="String" />
-
-        <variable
-            name="character_name"
-            type="String" />
+            name="characterItem"
+            type="com.ahmetocak.rickandmorty.domain.model.character.Character" />
 
         <variable
             name="gender_img"
             type="android.graphics.drawable.Drawable" />
+
+        <variable
+            name="characterItemClickListener"
+            type="com.ahmetocak.rickandmorty.ui.home.adapter.character.CharacterItemClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/mcv_character_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:clickable="true"
+        android:onClick="@{() -> characterItemClickListener.onCharacterItemClick(characterItem)}"
         app:cardCornerRadius="24dp">
 
         <LinearLayout
@@ -36,7 +38,7 @@
                 android:adjustViewBounds="true"
                 android:importantForAccessibility="no"
                 android:scaleType="fitXY"
-                app:imageUrl="@{character_img}"
+                app:imageUrl="@{characterItem.image}"
                 tools:src="@tools:sample/avatars" />
 
             <androidx.constraintlayout.widget.ConstraintLayout
@@ -65,7 +67,7 @@
                     android:id="@+id/tv_name"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@{character_name}"
+                    android:text="@{characterItem.name}"
                     android:textAlignment="center"
                     android:textAppearance="@style/TextAppearance.AppCompat.Medium"
                     android:textColorLink="#000000"

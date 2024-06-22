@@ -9,5 +9,18 @@
         android:id="@+id/homeScreenFragment"
         android:name="com.ahmetocak.rickandmorty.ui.home.HomeScreenFragment"
         android:label="fragment_home_screen"
-        tools:layout="@layout/fragment_home_screen" />
+        tools:layout="@layout/fragment_home_screen" >
+        <action
+            android:id="@+id/action_homeScreenFragment_to_characterScreenFragment"
+            app:destination="@id/characterScreenFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/characterScreenFragment"
+        android:name="com.ahmetocak.rickandmorty.ui.character.CharacterScreenFragment"
+        android:label="fragment_character_screen"
+        tools:layout="@layout/fragment_character_screen" >
+        <argument
+            android:name="character_data"
+            app:argType="com.ahmetocak.rickandmorty.domain.model.character.Character" />
+    </fragment>
 </navigation>

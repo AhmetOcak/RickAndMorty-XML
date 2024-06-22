@@ -1,4 +1,4 @@
-package com.ahmetocak.rickandmorty.ui.home.adapter
+package com.ahmetocak.rickandmorty.ui.home.adapter.location
 
 import com.ahmetocak.rickandmorty.domain.model.location.Locations
 

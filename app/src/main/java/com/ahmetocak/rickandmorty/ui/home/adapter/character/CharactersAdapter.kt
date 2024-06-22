@@ -1,4 +1,4 @@
-package com.ahmetocak.rickandmorty.ui.home.adapter
+package com.ahmetocak.rickandmorty.ui.home.adapter.character
 
 import android.graphics.drawable.Drawable
 import android.view.LayoutInflater
@@ -10,8 +10,10 @@ import com.ahmetocak.rickandmorty.domain.model.character.Character
 import com.ahmetocak.rickandmorty.ui.home.viewholder.CharactersViewHolder
 
 class CharactersAdapter(
-    private val setCharacterGender: (String) -> Drawable
-) : ListAdapter<Character, CharactersViewHolder>(CharactersDiffUtilCallback()) {
+    private val setCharacterGender: (String) -> Drawable,
+    private val characterItemClickListener: CharacterItemClickListener
+) : ListAdapter<Character, CharactersViewHolder>(CharactersDiffUtilCallback()),
+    CharacterItemClickListener {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CharactersViewHolder =
         CharactersViewHolder(
@@ -25,10 +27,14 @@ class CharactersAdapter(
     override fun onBindViewHolder(holder: CharactersViewHolder, position: Int) {
         val item = getItem(position)
         holder.bind(
-            characterImg = item.image,
-            characterName = item.name,
+            characterItem = item,
             genderImg = setCharacterGender(item.gender)
         )
+        holder.binding.characterItemClickListener = this
+    }
+
+    override fun onCharacterItemClick(item: Character) {
+        characterItemClickListener.onCharacterItemClick(item)
     }
 
     class CharactersDiffUtilCallback : DiffUtil.ItemCallback<Character>() {

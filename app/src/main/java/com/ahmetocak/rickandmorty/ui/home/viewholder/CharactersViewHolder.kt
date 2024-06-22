@@ -3,25 +3,18 @@ package com.ahmetocak.rickandmorty.ui.home.viewholder
 import android.graphics.drawable.Drawable
 import androidx.recyclerview.widget.RecyclerView
 import com.ahmetocak.rickandmorty.databinding.ItemCharacterBinding
-import com.google.android.material.card.MaterialCardView
+import com.ahmetocak.rickandmorty.domain.model.character.Character
 
 class CharactersViewHolder(
-    private val binding: ItemCharacterBinding
+    val binding: ItemCharacterBinding
 ) : RecyclerView.ViewHolder(binding.root) {
-    private val characterCard: MaterialCardView = binding.mcvCharacterItem
 
     fun bind(
-        characterImg: String,
-        characterName: String,
+        characterItem: Character,
         genderImg: Drawable
     ) {
-        characterCard.setOnClickListener {
-            // TODO: Navigate Character Screen
-        }
-
         binding.apply {
-            this.characterName = characterName
-            this.characterImg = characterImg
+            this.characterItem = characterItem
             this.genderImg = genderImg
             executePendingBindings()
         }

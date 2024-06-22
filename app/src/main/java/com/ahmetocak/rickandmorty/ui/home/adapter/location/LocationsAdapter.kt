@@ -1,4 +1,4 @@
-package com.ahmetocak.rickandmorty.ui.home.adapter
+package com.ahmetocak.rickandmorty.ui.home.adapter.location
 
 import android.graphics.ColorMatrix
 import android.graphics.ColorMatrixColorFilter
@@ -15,7 +15,8 @@ class LocationsAdapter(
     private val onSetLocationImages: (String) -> Drawable,
     private val locationItemClickListener: LocationItemClickListener,
     private val initializeCharacterList: (List<String>) -> Unit
-) : PagingDataAdapter<Locations, LocationsViewHolder>(LocationsDiffUtilCallback()), LocationItemClickListener {
+) : PagingDataAdapter<Locations, LocationsViewHolder>(LocationsDiffUtilCallback()),
+    LocationItemClickListener {
 
     companion object {
         private var selectedLocationId = 1

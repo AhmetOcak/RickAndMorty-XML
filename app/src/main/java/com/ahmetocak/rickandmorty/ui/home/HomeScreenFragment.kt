@@ -11,11 +11,14 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.navigation.fragment.findNavController
 import com.ahmetocak.rickandmorty.databinding.FragmentHomeScreenBinding
+import com.ahmetocak.rickandmorty.domain.model.character.Character
 import com.ahmetocak.rickandmorty.domain.model.location.Locations
-import com.ahmetocak.rickandmorty.ui.home.adapter.CharactersAdapter
-import com.ahmetocak.rickandmorty.ui.home.adapter.LocationItemClickListener
-import com.ahmetocak.rickandmorty.ui.home.adapter.LocationsAdapter
+import com.ahmetocak.rickandmorty.ui.home.adapter.character.CharacterItemClickListener
+import com.ahmetocak.rickandmorty.ui.home.adapter.character.CharactersAdapter
+import com.ahmetocak.rickandmorty.ui.home.adapter.location.LocationItemClickListener
+import com.ahmetocak.rickandmorty.ui.home.adapter.location.LocationsAdapter
 import com.ahmetocak.rickandmorty.ui.home.decoration.CharacterItemDecoration
 import com.ahmetocak.rickandmorty.ui.home.decoration.LocationItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -68,6 +71,14 @@ class HomeScreenFragment : Fragment() {
                     requireContext(),
                     viewModel.setCharacterGenderImage(gender)
                 )!!
+            },
+            characterItemClickListener = object : CharacterItemClickListener {
+                override fun onCharacterItemClick(item: Character) {
+                    findNavController().navigate(
+                        HomeScreenFragmentDirections
+                            .actionHomeScreenFragmentToCharacterScreenFragment(item)
+                    )
+                }
             }
         )
         binding.rvCharacters.apply {

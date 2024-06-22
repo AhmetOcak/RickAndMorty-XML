@@ -15,7 +15,7 @@
 
         <variable
             name="locationItemClickListener"
-            type="com.ahmetocak.rickandmorty.ui.home.adapter.LocationItemClickListener" />
+            type="com.ahmetocak.rickandmorty.ui.home.adapter.location.LocationItemClickListener" />
     </data>
 
     <com.google.android.material.card.MaterialCardView
